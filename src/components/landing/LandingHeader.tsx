@@ -11,6 +11,7 @@ const S = {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 9.4rem;
     background-color: ${({ theme }) => theme.color.black};
   `,
 
@@ -108,6 +109,10 @@ const S = {
       margin-bottom: 18.4rem;
     }
   `,
+  Button: styled(Button)`
+    width: 28rem;
+    padding: 1.5rem 0 1.6rem 0;
+  `,
 };
 
 export default function LandingHeader() {
@@ -129,13 +134,9 @@ export default function LandingHeader() {
         공주들아 서비스 한줄 소개 생각하긔 꼬옥 ~!
       </S.ServiceDescription>
       <S.LoginButtonBox onClick={handleLoginClick}>
-        <Button
-          size="L"
-          styleType={BUTTON_TYPE.PRIMARY}
-          style={{ width: '23.52rem' }}
-        >
+        <S.Button size="L" styleType={BUTTON_TYPE.PRIMARY}>
           로그인하기
-        </Button>
+        </S.Button>
       </S.LoginButtonBox>
     </S.MainBox>
   );

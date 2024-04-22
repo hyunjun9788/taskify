@@ -5,6 +5,7 @@ import LandingHeader from '@/components/landing/LandingHeader';
 import LandingMiddle from '@/components/landing/LandingMiddle';
 import LandingSetting from '@/components/landing/LandingSetting';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
+import Gnb from '@/common/header/Gnb';
 
 const S = {
   MainLayout: styled.main`
@@ -17,7 +18,6 @@ const S = {
       padding-top: 9.4rem;
     }
   `,
-
   IntroduceBox: styled.div`
     display: flex;
     flex-direction: column;
@@ -33,14 +33,17 @@ export default function Home() {
   }, []);
   return (
     mounted && (
-      <S.MainLayout>
-        <LandingHeader />
-        <S.IntroduceBox>
-          <LandingMiddle />
-          <LandingSetting />
-        </S.IntroduceBox>
-        <Footer />
-      </S.MainLayout>
+      <>
+        <Gnb />
+        <S.MainLayout>
+          <LandingHeader />
+          <S.IntroduceBox>
+            <LandingMiddle />
+            <LandingSetting />
+          </S.IntroduceBox>
+          <Footer />
+        </S.MainLayout>
+      </>
     )
   );
 }

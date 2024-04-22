@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { styled } from 'styled-components';
-import LogoName from '@/public/icon/locoName.svg';
-import LogoIcon from '@/public/icon/logoIcon.svg';
+import WhiteLogo from '@/public/icon/whiteLogo.svg';
+import WhiteLogoName from '@/public/icon/whiteLogoName.svg';
 
 const S = {
   Container: styled.nav`
@@ -26,7 +26,7 @@ const S = {
     align-items: center;
   `,
 
-  LogoName: styled(LogoName)`
+  LogoName: styled(WhiteLogoName)`
     @media (max-width: 787px) {
       display: none;
     }
@@ -43,10 +43,10 @@ const S = {
     a {
       border-radius: 0.8rem;
       padding: 0.6rem 1rem;
+      color: ${({ theme }) => theme.color.white};
+      font-size: 1.6rem;
+      font-weight: 400;
 
-      &:hover {
-        background-color: #eee;
-      }
       @media (max-width: 787px) {
         font-size: 1.4rem;
       }
@@ -58,7 +58,7 @@ function Gnb() {
   return (
     <S.Container>
       <S.Logo>
-        <LogoIcon />
+        <WhiteLogo />
         <S.LogoName />
       </S.Logo>
       <S.GoSign>

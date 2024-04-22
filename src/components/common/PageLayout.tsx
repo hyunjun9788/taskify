@@ -33,8 +33,10 @@ const S = {
 function PageLayout({
   children,
   myPage,
+  openInviteModal,
 }: {
   children: React.ReactNode;
+  openInviteModal?: () => void;
   myPage: boolean;
 }) {
   const MY_IMAGE_URL = 'https://i.ibb.co/ysRQMyj/me.jpg';
@@ -51,16 +53,30 @@ function PageLayout({
       id: 3,
       profileImageUrl: 'https://i.ibb.co/VgZHtYL/Ellipse-39.png',
     },
+    {
+      id: 4,
+      profileImageUrl: 'https://i.ibb.co/VgZHtYL/Ellipse-39.png',
+    },
+    {
+      id: 5,
+      profileImageUrl: 'https://i.ibb.co/VgZHtYL/Ellipse-39.png',
+    },
+    {
+      id: 6,
+      profileImageUrl: 'https://i.ibb.co/VgZHtYL/Ellipse-39.png',
+    },
   ];
 
   return (
     <S.LayoutContainer>
       <Sidebar dashboards={dashboards} />
       <DashBoardHeader
-        menuName="내 대시보드"
+        dashboardName={dashboards[0].name}
+        createdByMe={dashboards[0].createdByMe}
         profileName="남현준"
         profileImgURL={MY_IMAGE_URL}
         invitedUsers={invitedUsers}
+        openInviteModal={openInviteModal}
         myPage={myPage}
       />
       <S.BodyContainer>{children}</S.BodyContainer>

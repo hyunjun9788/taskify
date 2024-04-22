@@ -18,6 +18,7 @@ const S = {
     height: 100vh;
     padding: 1.25rem 1.5rem;
     border: 1px solid ${({ theme }) => theme.color.grayLight};
+    border-top: none;
     background-color: ${({ theme }) => theme.color.white};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 

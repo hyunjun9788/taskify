@@ -24,6 +24,7 @@ const S = {
     width: 100%;
   `,
   Container: styled.div`
+    position: relative;
     margin-top: 0.4rem;
     width: 100%;
   `,
