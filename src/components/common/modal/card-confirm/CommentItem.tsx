@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { CommentItemProps } from '@/components/common/Modal/card-confirm/types';
+import {
+  CommentFunctionProps,
+  CommentItemProps,
+} from '@/components/common/Modal/card-confirm/types';
 import formatDate from '@/utils/date';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
 
@@ -96,7 +99,7 @@ const S = {
     flex: 1;
     width: 30rem;
     padding: 0.5rem;
-    border: ${({ theme }) => theme.color.grayLight};
+    border: 1px solid ${({ theme }) => theme.color.grayLight};
     border-radius: 0.5rem;
     margin: 0 1rem;
   `,
@@ -106,11 +109,12 @@ function CommentItem({
   id,
   author,
   content,
-  createdDate,
-  updatedDate,
+  createdAt,
+  updatedAt,
+  cardId,
   edit,
   remove,
-}: CommentItemProps) {
+}: CommentFunctionProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState(content);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -153,7 +157,7 @@ function CommentItem({
       <S.CommentInfoBox>
         <S.NameAndDateBox>
           <S.CommentNickName>{author.nickname}</S.CommentNickName>
-          <S.CommentDate>{formatDate(createdDate)}</S.CommentDate>
+          <S.CommentDate>{formatDate(createdAt)}</S.CommentDate>
         </S.NameAndDateBox>
 
         <S.ContentBox>

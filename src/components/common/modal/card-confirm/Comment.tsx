@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
-import MOCK_DATA from './MockData';
+import { CommentItemProps } from './types';
 import styled from 'styled-components';
+import MOCK_DATA from '@/components/common/Modal/card-confirm/MockData';
 
 const S = {
   CommentContainer: styled.ul`
@@ -31,7 +32,7 @@ function Comment() {
   };
 
   const edit = (content: string, id: number) => {
-    const updatedList = list.map((comment) =>
+    const updatedList = list.map((comment: CommentItemProps) =>
       comment.id === id
         ? { ...comment, content, updatedAt: new Date().toISOString() }
         : comment,
@@ -40,7 +41,9 @@ function Comment() {
   };
 
   const remove = (id: number) => {
-    const updatedList = list.filter((comment) => comment.id !== id);
+    const updatedList = list.filter(
+      (comment: CommentItemProps) => comment.id !== id,
+    );
     setList(updatedList);
   };
 

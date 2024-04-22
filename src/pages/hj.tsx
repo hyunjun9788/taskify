@@ -70,21 +70,22 @@ function Hj() {
     `,
   };
   return (
-    <PageLayout>
-      <div style={{ width: '100px', height: '100px', background: 'red' }}>
-        red
-      </div>
-      {/* <S.Button onClick={openModal1}>1번 모달(기본)</S.Button> */}
-      {/* <BackDropModal isOpen={isModalOpen1} onClose={closeModal1}> */}
-      {/* <S.Container> */}
-      {/* <Sidebar dashboards={dashboards} />
+    // <PageLayout myPage={false}>
+    //   <div style={{ width: '100px', height: '100px', background: 'red' }}>
+    //     red
+    //   </div>
+    <div>
+      <S.Button onClick={openModal1}>1번 모달(기본)</S.Button>
+      <BackDropModal isOpen={isModalOpen1} onClose={closeModal1}>
+        <S.Container>
+          {/* <Sidebar dashboards={dashboards} />
       <DashBoardHeader
         menuName="내 대시보드"
         profileName="남현준"
         profileImgURL={MY_IMAGE_URL}
         invitedUsers={invitedUsers}
-      /> */}
-      {/* <div>
+      /> 
+    <div>
         {stateTags.map((tag, index) => (
           <StateTag isMobile={isMobile}>{tag}</StateTag>
         ))}
@@ -93,11 +94,12 @@ function Hj() {
             {tag}
           </HashTag>
         ))}
-      </div> */}
-      {/* <CardConfirmModal cardInfoData={cardInfoData} /> */}
-      {/* </S.Container> */}
-      {/* </BackDropModal> */}
-    </PageLayout>
+      </div>  */}
+          <CardConfirmModal cardInfoData={cardInfoData} />
+        </S.Container>
+      </BackDropModal>
+    </div>
+    // </PageLayout>
   );
 }
 

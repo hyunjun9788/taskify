@@ -22,11 +22,13 @@ function CommentList({ list, edit, remove }: CommentListProps) {
     <>
       {list.map((comment) => (
         <CommentItem
+          key={comment.id}
           id={comment.id}
           author={comment.author}
           content={comment.content}
-          createdDate={comment.createdAt}
-          updatedDate={comment.updatedAt}
+          createdAt={comment.createdAt}
+          updatedAt={comment.updatedAt}
+          cardId={comment.cardId}
           edit={edit}
           remove={remove}
         />

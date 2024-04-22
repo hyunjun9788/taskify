@@ -24,14 +24,17 @@ export interface CardConfirmModalProps {
 export interface CommentItemProps {
   id: number;
   content: string;
-  createdDate: string;
-  updatedDate: string;
-
+  createdAt: string;
+  updatedAt: string;
+  cardId: number;
   author: {
     profileImageUrl: string;
     nickname: string;
     id: number;
   };
+}
+
+export interface CommentFunctionProps extends CommentItemProps {
   edit: (content: string, id: number) => void;
   remove: (id: number) => void;
 }
