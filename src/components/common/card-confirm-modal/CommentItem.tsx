@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { CommentItemProps } from '@/components/common/modal/card-confirm/types';
+import { CommentItemProps } from '@/components/common/Modal/card-confirm/types';
 import formatDate from '@/utils/formatDate';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
 
@@ -56,6 +56,7 @@ const S = {
   CommentContent: styled.li`
     flex: 1;
     margin: 0 1rem;
+
     cursor: pointer;
 
     ${MEDIA_QUERIES.onMobile} {
@@ -96,7 +97,7 @@ const S = {
     flex: 1;
     width: 30rem;
     padding: 0.5rem;
-    border: ${({ theme }) => theme.color.grayLight};
+    border: 1px solid ${({ theme }) => theme.color.grayLight};
     border-radius: 0.5rem;
     margin: 0 1rem;
   `,
