@@ -1,11 +1,12 @@
 import { useRef } from 'react';
-import CommentListLoader from './CommentListLoader';
 import styled from 'styled-components';
 import CommentItem from '@/components/common/modal/card-detail/CommentItem';
+import CommentListLoader from '@/components/common/modal/card-detail/CommentListLoader';
 import InvitedDashBoardListLoader from '@/components/dashboard/my-board/InvitedDashBoardListLoader';
 import useCommentsListQuery from '@/hooks/query/comments/useCommentsListQuery';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
+import { CardInfoProps } from '@/types/CardDetail';
 
 const S = {
   CommentListContainer: styled.div`
@@ -49,10 +50,15 @@ interface CommentItemDataProps {
     id: number;
   };
 }
-function CommentList({ cardDetailData }) {
-  const loaderRef = useRef();
 
-  const { data, fetchNextPage } = useCommentsListQuery({
+interface CommentListProps {
+  cardDetailData: CardInfoProps;
+}
+
+function CommentList({ cardDetailData }: CommentListProps) {
+  const loaderRef: any = useRef();
+
+  const { data, fetchNextPage }: any = useCommentsListQuery({
     cardId: cardDetailData?.id,
   });
   // console.log(data);
@@ -62,6 +68,7 @@ function CommentList({ cardDetailData }) {
   // console.log('bbbb', pages && pages[0].comments.length);
 
   const commentsCount = pages && pages[0].comments.length;
+
   useIntersectionObserver(async () => {
     await fetchNextPage();
   }, loaderRef);
@@ -69,7 +76,7 @@ function CommentList({ cardDetailData }) {
   return (
     commentsCount !== 0 && (
       <S.CommentListContainer>
-        {data?.pages.map((page) =>
+        {data?.pages.map((page: any) =>
           page.comments.map((comment: CommentItemDataProps) => (
             <CommentItem
               key={comment.id}

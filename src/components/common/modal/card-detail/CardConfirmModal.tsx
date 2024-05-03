@@ -1,8 +1,8 @@
-import BackDropModal from '../BackDropModal';
-import MainBox from './MainBox';
-import ModalHeader from './ModalHeader';
-import SideBox from './SideBox';
 import styled from 'styled-components';
+import BackDropModal from '@/components/common/modal/BackDropModal';
+import MainBox from '@/components/common/modal/card-detail/MainBox';
+import ModalHeader from '@/components/common/modal/card-detail/ModalHeader';
+import SideBox from '@/components/common/modal/card-detail/SideBox';
 import useDetailCardQuery from '@/hooks/query/cards/useDetailCardQuery';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
 
@@ -56,7 +56,7 @@ function CardConfirmModal({
   openToDoEditModal,
 }: ModalOpenAndCloseProps) {
   const { data: cardDetailData } = useDetailCardQuery({
-    cardId: cardId,
+    cardId,
   });
 
   return (

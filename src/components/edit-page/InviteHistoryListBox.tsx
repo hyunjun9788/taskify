@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Button from '../common/button/Button';
 import styled from 'styled-components';
+import Button from '@/components/common/button/Button';
 import useCancelInvitationMutation from '@/hooks/query/dashboards/useCancelInvitationMutation';
 import useLoadInvitationQuery from '@/hooks/query/dashboards/useLoadInvitationQuery';
 import { BUTTON_TYPE } from '@/constants/BUTTON_TYPE';

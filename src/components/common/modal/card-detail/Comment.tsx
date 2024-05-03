@@ -10,7 +10,7 @@ const S = {
   `,
 };
 
-interface CommentProps {
+export interface CommentProps {
   cardDetailData: CardInfoProps;
 }
 function Comment({ cardDetailData }: CommentProps) {

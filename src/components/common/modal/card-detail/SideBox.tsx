@@ -1,5 +1,5 @@
-import AvatarImage from '../../AvatarImage';
 import styled from 'styled-components';
+import AvatarImage from '@/components/common/AvatarImage';
 import useDetailCardQuery from '@/hooks/query/cards/useDetailCardQuery';
 import useWindowSize, { Size } from '@/hooks/useWindowSize';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';

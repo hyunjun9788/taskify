@@ -158,9 +158,7 @@ function ModalHeader({
             isOpen={isDeleteOpen}
             onClose={() => setIsDeleteOpen(false)}
             message="정말 삭제하시겠습니까?🥹"
-            onClick={() =>
-              responseInvitationMutate({ cardId: String(card_Id) })
-            }
+            onClick={() => responseInvitationMutate({ cardId: card_Id })}
           />
         </S.DropdownContainer>
         <S.CloseIcon onClick={onClose} />
