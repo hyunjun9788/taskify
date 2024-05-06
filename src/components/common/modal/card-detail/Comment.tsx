@@ -10,14 +10,11 @@ const S = {
   `,
 };
 
-export interface CommentProps {
-  cardDetailData: CardInfoProps;
-}
-function Comment({ cardDetailData }: CommentProps) {
+function Comment() {
   return (
     <S.CommentContainer>
-      <CommentForm cardDetailData={cardDetailData} />
-      <CommentList cardDetailData={cardDetailData} />
+      <CommentForm />
+      <CommentList />
     </S.CommentContainer>
   );
 }

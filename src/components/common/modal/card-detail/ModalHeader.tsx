@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import { ThemeContext } from './CardConfirmModal';
 import styled from 'styled-components';
 import ConfirmDeleteModal from '@/components/common/modal/ConfirmDeleteModal';
 import WarningModal from '@/components/common/modal/WarningModal';
@@ -100,22 +101,11 @@ const S = {
   `,
 };
 
-interface ModalHeaderProps {
-  onClose: () => void;
-  card_Id: number;
-  openToDoEditModal: () => void;
-  cardDetailData: CardInfoProps;
-}
-
-function ModalHeader({
-  onClose,
-  card_Id,
-  openToDoEditModal,
-  cardDetailData,
-}: ModalHeaderProps) {
+function ModalHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-
+  const { cardDetailData, openToDoEditModal, onClose } =
+    useContext(ThemeContext);
   const optionAreaRef = useRef<HTMLUListElement>(null);
 
   const title = cardDetailData?.title;
@@ -158,7 +148,9 @@ function ModalHeader({
             isOpen={isDeleteOpen}
             onClose={() => setIsDeleteOpen(false)}
             message="정말 삭제하시겠습니까?🥹"
-            onClick={() => responseInvitationMutate({ cardId: card_Id })}
+            onClick={() =>
+              responseInvitationMutate({ cardId: cardDetailData?.id })
+            }
           />
         </S.DropdownContainer>
         <S.CloseIcon onClick={onClose} />

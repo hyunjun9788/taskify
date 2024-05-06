@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import styled from 'styled-components';
 import BackDropModal from '@/components/common/modal/BackDropModal';
 import MainBox from '@/components/common/modal/card-detail/MainBox';
@@ -5,6 +6,14 @@ import ModalHeader from '@/components/common/modal/card-detail/ModalHeader';
 import SideBox from '@/components/common/modal/card-detail/SideBox';
 import useDetailCardQuery from '@/hooks/query/cards/useDetailCardQuery';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
+import { CardInfoProps } from '@/types/CardDetail';
+
+// export interface ContextProps {
+//   cardDetailData: CardInfoProps;
+//   title: string;
+// }
+
+export const ThemeContext = createContext<any>(null);
 
 const S = {
   ModalLayout: styled.div`
@@ -62,16 +71,15 @@ function CardConfirmModal({
   return (
     <BackDropModal isOpen={isOpen} onClose={onClose}>
       <S.ModalLayout>
-        <ModalHeader
-          onClose={onClose}
-          card_Id={cardId}
-          openToDoEditModal={openToDoEditModal}
-          cardDetailData={cardDetailData}
-        />
-        <S.ModalBody>
-          <MainBox stateTag={title} cardDetailData={cardDetailData} />
-          <SideBox card_Id={cardId} />
-        </S.ModalBody>
+        <ThemeContext.Provider
+          value={{ cardDetailData, title, openToDoEditModal, onClose }}
+        >
+          <ModalHeader />
+          <S.ModalBody>
+            <MainBox />
+            <SideBox />
+          </S.ModalBody>
+        </ThemeContext.Provider>
       </S.ModalLayout>
     </BackDropModal>
   );

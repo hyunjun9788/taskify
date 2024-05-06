@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { useContext } from 'react';
+import { ThemeContext } from './CardConfirmModal';
 import styled from 'styled-components';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
 import { CardInfoProps } from '@/types/CardDetail';
@@ -56,10 +58,8 @@ const S = {
   `,
 };
 
-interface ContentAndImageBoxProps {
-  cardDetailData: CardInfoProps;
-}
-function ContentAndImageBox({ cardDetailData }: ContentAndImageBoxProps) {
+function ContentAndImageBox() {
+  const { cardDetailData } = useContext(ThemeContext);
   const description = cardDetailData?.description;
   const imageUrl = cardDetailData?.imageUrl;
 

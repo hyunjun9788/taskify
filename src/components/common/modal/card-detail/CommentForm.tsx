@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ThemeContext } from './CardConfirmModal';
 import styled from 'styled-components';
 import Button from '@/components/common/button/Button';
 import useCreateCommentsMutation from '@/hooks/query/comments/useCreateCommentsMutation';
@@ -75,11 +76,9 @@ const S = {
   `,
 };
 
-interface CommentFormProps {
-  cardDetailData: CardInfoProps;
-}
+function CommentForm() {
+  const { cardDetailData } = useContext(ThemeContext);
 
-function CommentForm({ cardDetailData }: CommentFormProps) {
   const [inputValue, setInputValue] = useState('');
 
   const { mutate: responseCreateComment } = useCreateCommentsMutation();
@@ -93,9 +92,9 @@ function CommentForm({ cardDetailData }: CommentFormProps) {
 
     responseCreateComment({
       content: inputValue,
-      cardId: cardDetailData?.id,
-      columnId: cardDetailData?.columnId,
-      dashboardId: cardDetailData?.dashboardId,
+      cardId: Number(cardDetailData?.id),
+      columnId: Number(cardDetailData?.columnId),
+      dashboardId: Number(cardDetailData?.dashboardId),
     });
 
     setInputValue('');

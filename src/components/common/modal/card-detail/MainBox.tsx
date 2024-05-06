@@ -22,16 +22,12 @@ const S = {
   `,
 };
 
-interface MainBoxProps {
-  stateTag: string;
-  cardDetailData: CardInfoProps;
-}
-function MainBox({ stateTag, cardDetailData }: MainBoxProps) {
+function MainBox() {
   return (
     <S.MainBox>
-      <TagBox stateTag={stateTag} cardDetailData={cardDetailData} />
-      <ContentAndImageBox cardDetailData={cardDetailData} />
-      <Comment cardDetailData={cardDetailData} />
+      <TagBox />
+      <ContentAndImageBox />
+      <Comment />
     </S.MainBox>
   );
 }

@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { ThemeContext } from './CardConfirmModal';
 import styled from 'styled-components';
 import CommentItem from '@/components/common/modal/card-detail/CommentItem';
 import CommentListLoader from '@/components/common/modal/card-detail/CommentListLoader';
@@ -51,15 +52,12 @@ interface CommentItemDataProps {
   };
 }
 
-interface CommentListProps {
-  cardDetailData: CardInfoProps;
-}
-
-function CommentList({ cardDetailData }: CommentListProps) {
+function CommentList() {
+  const { cardDetailData } = useContext(ThemeContext);
   const loaderRef: any = useRef();
 
   const { data, fetchNextPage }: any = useCommentsListQuery({
-    cardId: cardDetailData?.id,
+    cardId: Number(cardDetailData?.id),
   });
   // console.log(data);
   const isLastPage = data?.pages?.at(-1)?.cursorId === null;

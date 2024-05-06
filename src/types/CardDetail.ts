@@ -18,12 +18,6 @@ export interface CardInfoProps {
   createdAt: string;
   updatedAt: string;
 }
-export interface CardConfirmModalProps {
-  cardInfoData: CardInfoProps;
-}
-export interface ModalCloseProps extends CardConfirmModalProps {
-  onClose: () => void;
-}
 
 export interface CommentItemProps {
   id: number;
@@ -36,8 +30,4 @@ export interface CommentItemProps {
     nickname: string;
     profileImageUrl: string;
   };
-}
-export interface CommentItemsAndFunctionProps extends CommentItemProps {
-  edit: (content: string, id: number) => void;
-  remove: (id: number) => void;
 }

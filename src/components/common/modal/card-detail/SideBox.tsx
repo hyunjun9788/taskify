@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ThemeContext } from './CardConfirmModal';
 import styled from 'styled-components';
 import AvatarImage from '@/components/common/AvatarImage';
 import useDetailCardQuery from '@/hooks/query/cards/useDetailCardQuery';
@@ -80,14 +82,12 @@ const S = {
   `,
 };
 
-interface SideBoxProps {
-  card_Id: number;
-}
-function SideBox({ card_Id }: SideBoxProps) {
+function SideBox() {
+  const { cardDetailData } = useContext(ThemeContext);
   const { width }: Size = useWindowSize();
   const isMobile: boolean = width !== undefined && width < 768;
   const { data } = useDetailCardQuery({
-    cardId: card_Id,
+    cardId: Number(cardDetailData?.id),
   });
 
   const { nickname, profileImageUrl } =

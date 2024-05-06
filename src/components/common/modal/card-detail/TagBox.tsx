@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ContextProps, ThemeContext } from './CardConfirmModal';
 import styled from 'styled-components';
 import HashTag from '@/components/common/tag/HashTag';
 import StateTag from '@/components/common/tag/StateTag';
@@ -23,11 +25,9 @@ const S = {
   `,
 };
 
-interface TagBoxProps {
-  stateTag: string;
-  cardDetailData: CardInfoProps;
-}
-function TagBox({ stateTag, cardDetailData }: TagBoxProps) {
+function TagBox() {
+  const { cardDetailData, title: stateTag } =
+    useContext<ContextProps>(ThemeContext);
   const tags = cardDetailData && cardDetailData.tags;
   const { width }: Size = useWindowSize();
   const isMobile: boolean = width !== undefined && width <= 768;
