@@ -19,7 +19,7 @@ export interface CardInfoProps {
   updatedAt: string;
 }
 
-export interface CommentItemProps {
+export interface Comment {
   id: number;
   content: string;
   createdAt: string;

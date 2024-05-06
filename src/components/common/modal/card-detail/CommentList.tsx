@@ -3,11 +3,10 @@ import { ThemeContext } from './CardConfirmModal';
 import styled from 'styled-components';
 import CommentItem from '@/components/common/modal/card-detail/CommentItem';
 import CommentListLoader from '@/components/common/modal/card-detail/CommentListLoader';
-import InvitedDashBoardListLoader from '@/components/dashboard/my-board/InvitedDashBoardListLoader';
 import useCommentsListQuery from '@/hooks/query/comments/useCommentsListQuery';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
-import { CardInfoProps } from '@/types/CardDetail';
+import { Comment } from '@/types/CardDetail';
 
 const S = {
   CommentListContainer: styled.div`
@@ -39,31 +38,23 @@ const S = {
   `,
 };
 
-interface CommentItemDataProps {
-  id: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  cardId: number;
-  author: {
-    profileImageUrl: string;
-    nickname: string;
-    id: number;
-  };
+interface Page {
+  cursorId: number;
+  comments: Comment[];
 }
 
 function CommentList() {
   const { cardDetailData } = useContext(ThemeContext);
-  const loaderRef: any = useRef();
+  const loaderRef = useRef<HTMLElement | null>(null);
 
   const { data, fetchNextPage }: any = useCommentsListQuery({
     cardId: Number(cardDetailData?.id),
   });
-  // console.log(data);
+  console.log('data', data);
+  console.log('fetch', fetchNextPage);
   const isLastPage = data?.pages?.at(-1)?.cursorId === null;
 
   const pages = data?.pages;
-  // console.log('bbbb', pages && pages[0].comments.length);
 
   const commentsCount = pages && pages[0].comments.length;
 
@@ -74,8 +65,8 @@ function CommentList() {
   return (
     commentsCount !== 0 && (
       <S.CommentListContainer>
-        {data?.pages.map((page: any) =>
-          page.comments.map((comment: CommentItemDataProps) => (
+        {data?.pages.map((page: Page) =>
+          page.comments.map((comment: Comment) => (
             <CommentItem
               key={comment.id}
               id={comment.id}

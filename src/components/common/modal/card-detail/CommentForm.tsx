@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Button from '@/components/common/button/Button';
 import useCreateCommentsMutation from '@/hooks/query/comments/useCreateCommentsMutation';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
-import { CardInfoProps, CommentItemProps } from '@/types/CardDetail';
 
 const S = {
   CommentFormBox: styled.div`

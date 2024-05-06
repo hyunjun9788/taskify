@@ -5,7 +5,7 @@ import { formatDate } from '@/utils/formatDate';
 import useDeleteCommentsMutation from '@/hooks/query/comments/useDeleteCommentsMutation';
 import useEditCommentsMutation from '@/hooks/query/comments/useEditCommentsMutation';
 import MEDIA_QUERIES from '@/constants/MEDIAQUERIES';
-import { CommentItemProps } from '@/types/CardDetail';
+import { Comment } from '@/types/CardDetail';
 import defaultImg from '@/public/image/defaultImg.jpeg';
 
 const S = {
@@ -106,13 +106,7 @@ const S = {
   `,
 };
 
-function CommentItem({
-  id,
-  author,
-  content,
-  createdAt,
-  updatedAt,
-}: CommentItemProps) {
+function CommentItem({ id, author, content, createdAt, updatedAt }: Comment) {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState(content);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -133,13 +127,11 @@ function CommentItem({
   ) => {
     e.preventDefault();
     responseEditCommentMutate({ content: editContent, commentId: id });
-    // edit(editContent, id);
     setIsEditing(false);
   };
 
   const handleDeleteComment = async () => {
     responseDeleteCommentMutate({ commentId: id });
-    // remove(id);
   };
 
   useEffect(() => {
@@ -150,8 +142,7 @@ function CommentItem({
 
   return (
     <S.CommentItemContainer>
-
-       {author.profileImageUrl ? (
+      {author.profileImageUrl ? (
         <S.ProfileImage
           width={34}
           height={34}
